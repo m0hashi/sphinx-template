@@ -15,14 +15,15 @@ help:
 .PHONY: help Makefile
 
 preview:
-	@echo Running sphinx-autobuild. View live edits at:
-	
-	@echo http://localhost:8000
-	
 	sphinx-autobuild -b html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(0)
 
 build:
 	@$(SPHINXBUILD) -b html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(0)
+
+rebuild:
+	rm -rf "$(BUILDDIR)"
+	@$(SPHINXBUILD) -b html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(0)
+
 
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
